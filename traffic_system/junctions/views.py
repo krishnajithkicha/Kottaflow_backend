@@ -10,6 +10,21 @@ from rest_framework.response import Response
 
 # Store latest location data in memory
 latest_route = {}
+from django.http import JsonResponse
+import requests
+
+@api_view(['GET'])
+def directions_proxy(request):
+    origin = request.GET.get('origin')
+    destination = request.GET.get('destination')
+    key = 'AIzaSyCzPpjsrF--MkMLHaFLsHkxRPQxZohV10s'  # Replace with your actual API key
+
+    if not origin or not destination:
+        return JsonResponse({'error': 'origin and destination required'}, status=400)
+
+    url = f'https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&key={key}'
+    response = requests.get(url)
+    return JsonResponse(response.json())
 
 @api_view(['POST'])
 def set_route(request):
