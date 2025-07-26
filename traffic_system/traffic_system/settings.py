@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ajocz#@t27c8!-9km=2ha_uu^&()w(11oskaa5=w)ahe9oj!i5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['kottaflow_backend.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # for collectstatic
 
